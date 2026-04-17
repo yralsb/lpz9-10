@@ -79,6 +79,20 @@ def validate_name(name):
         return False, "Имя должно содержать только буквы"
     return True, "Имя корректно"
 
+def validate_student_name(first_name, last_name):
+    """
+    Проверяет имя и фамилию студента.
+    Возвращает tuple (is_valid, error_message).
+    """
+    if not first_name or not last_name:
+        return False, "Имя и фамилия не могут быть пустыми"
+    if not first_name[0].isupper() or not last_name[0].isupper():
+        return False, "Имя и фамилия должны начинаться с заглавной буквы"
+    # Разрешены буквы и дефис
+    if not all(c.isalpha() or c == '-' for c in first_name) or not all(c.isalpha() or c == '-' for c in last_name):
+        return False, "Имя и фамилия могут содержать только буквы и дефис"
+    return True, "Имя и фамилия корректны"
+
 
 # Тестирование валидаторов
 if __name__ == "__main__":

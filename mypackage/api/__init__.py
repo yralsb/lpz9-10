@@ -7,8 +7,9 @@ __version__ = "1.0.0"
 from mypackage.models.student import Student
 from mypackage.models.group import Group
 from mypackage.utils.validators import validate_email, validate_age
-from mypackage.utils.formatters import format_student_info, format_grades, format_group_report, print_colored
+from mypackage.utils.formatters import format_student_info, format_grades, print_colored
 from mypackage.api.client import APIClient
+from mypackage.utils import format_group_report
 
 __all__ = [
     'Student',

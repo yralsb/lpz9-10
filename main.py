@@ -144,6 +144,7 @@ def interactive_mode():
         print("2. Получить пользователей")
         print("3. Получить случайную цитату")
         print("4. Показать статистику запросов")
+        print("5. Показать случайную цитату (из уже загруженного API)")
         print("0. Выход")
 
         choice = input("\nВаш выбор: ").strip()
@@ -180,6 +181,14 @@ def interactive_mode():
             print_colored("\n--- СТАТИСТИКА ---", "yellow")
             for key, value in stats.items():
                 print(f" {key}: {value}")
+        elif choice == "5":
+            print_colored("\n--- ПОЛУЧЕНИЕ СЛУЧАЙНОЙ ЦИТАТЫ ---", "yellow")
+            quote = client.get_random_quote()
+            if quote:
+                print_colored(f"\n\"{quote['text']}\"", "yellow")
+                print_colored(f"— {quote['author']}\n", "green")
+            else:
+                print_colored("Не удалось получить цитату. Проверьте интернет.", "red")
 
 
 def main():

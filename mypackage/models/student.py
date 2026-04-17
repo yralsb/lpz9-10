@@ -40,7 +40,23 @@ class Student:
         self.created_at = datetime.now()
         Student._id_counter += 1
 
+    def add_multiple_grades(self, grades_list):
+        """
+        Добавляет несколько оценок из списка словарей.
+        grades_list = [{"grade": 5, "subject": "Python"}, ...]
+        Возвращает количество успешно добавленных оценок.
+        """
+        count = 0
+        for item in grades_list:
+            grade = item.get("grade")
+            subject = item.get("subject", "General")
+            if grade is not None and self.add_grade(grade, subject):
+                count += 1
+        return count
+
     def add_grade(self, grade, subject="General"):
+
+
         """
         Добавляет оценку студенту.
 
